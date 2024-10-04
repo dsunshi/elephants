@@ -1,0 +1,7 @@
+# direnv
+.direnv/
+dist-newstyle/
+
+#
+*.o
+*.hi
