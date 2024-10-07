@@ -11,7 +11,7 @@ maintainer:         david@sunshines.org
 category:           Graphics
 build-type:         Simple
 extra-doc-files:    CHANGELOG.md
--- extra-source-files:
+extra-source-files: src/ppm.c, src/ppm.h
 
 common warnings
     ghc-options: -Wall
@@ -19,20 +19,27 @@ common warnings
 library
     import:           warnings
     exposed-modules:  MyLib
-    -- other-modules:
+    other-modules:    Ppm
+    include-dirs:     ./src
+    cc-options:       -Wall -Wextra
+    includes:         src/ppm.h
+    install-includes: src/ppm.h
+    c-sources:        src/ppm.c
     -- other-extensions:
     build-depends:    base ^>=4.18.2.1
+    --build-tool-depends: c2hs:c2hs
     hs-source-dirs:   src
     default-language: Haskell2010
 
 test-suite hPxm-test
     import:           warnings
     default-language: Haskell2010
-    -- other-modules:
-    -- other-extensions:
+    other-modules:    Ppm
+    include-dirs:     ./include
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          Main.hs
+    build-tool-depends: c2hs:c2hs
     build-depends:
         base ^>=4.18.2.1,
         hPxm

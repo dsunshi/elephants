@@ -22,12 +22,15 @@
           inputsFrom = [ config.haskellProjects.default.outputs.devShell ];
           nativeBuildInputs = with pkgs; [
             haskell-language-server
+            llvmPackages.clang
+            bear
             haskellPackages.hoogle
             haskellPackages.fast-tags
             haskellPackages.haskell-debug-adapter
             haskellPackages.haskell-dap
             haskellPackages.ghci-dap
             haskellPackages.threadscope
+            haskellPackages.c2hs
             haskellPackages.markdown-unlit # Literate Haskell support for Markdown
           ];
         };
