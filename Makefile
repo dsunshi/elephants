@@ -4,12 +4,9 @@ all: cabal-build
 cabal-build:
 	cabal build
 
-src/ppm.o: src/ppm.c include/ppm.h
-	gcc -c $< -Wall -Wextra -I ./include -o $@
+src/ppm.o: src/ppm.c src/ppm.h
+	gcc -c $< -Wall -Wextra -o $@
 
 .PHONY: clean
 clean:
 	rm -f src/*.o
-	rm -f src/*.chi
-	rm -f src/*.chs.h
-	rm -f src/Ppm.hs
